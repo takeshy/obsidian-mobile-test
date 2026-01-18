@@ -4403,7 +4403,7 @@
   min-width: 500px;
 }
 
-.workflow-generation-modal .modal-drag-handle {
+.workflow-generation-modal-content .modal-drag-handle {
   cursor: move;
   padding: 8px 0;
   margin: -16px -16px 16px -16px;
@@ -4411,7 +4411,7 @@
   border-bottom: 1px solid var(--background-modifier-border);
 }
 
-.workflow-generation-modal .modal-drag-handle h2 {
+.workflow-generation-modal-content .modal-drag-handle h2 {
   margin: 0;
 }
 
@@ -4527,7 +4527,7 @@
   max-width: 900px;
 }
 
-.workflow-preview-modal .modal-drag-handle {
+.workflow-preview-modal-content .modal-drag-handle {
   cursor: move;
   padding: 8px 0;
   margin: -16px -16px 16px -16px;
@@ -4535,7 +4535,7 @@
   border-bottom: 1px solid var(--background-modifier-border);
 }
 
-.workflow-preview-modal .modal-drag-handle h2 {
+.workflow-preview-modal-content .modal-drag-handle h2 {
   margin: 0;
 }
 
@@ -4696,16 +4696,16 @@
   transform: none !important;
 }
 
-.is-mobile .workflow-generation-modal .modal-content,
-.is-mobile .workflow-preview-modal .modal-content {
+.is-mobile .workflow-generation-modal-content,
+.is-mobile .workflow-preview-modal-content {
   display: flex;
   flex-direction: column;
   height: 100%;
   overflow: hidden;
 }
 
-.is-mobile .workflow-generation-modal .modal-drag-handle,
-.is-mobile .workflow-preview-modal .modal-drag-handle {
+.is-mobile .workflow-generation-modal-content .modal-drag-handle,
+.is-mobile .workflow-preview-modal-content .modal-drag-handle {
   flex-shrink: 0;
   cursor: default;
 }
@@ -4789,20 +4789,20 @@
 }
 
 /* Hide upper content when textarea is focused on mobile */
-.is-mobile .workflow-preview-modal.textarea-focused .modal-drag-handle,
-.is-mobile .workflow-preview-modal.textarea-focused .workflow-preview-name,
-.is-mobile .workflow-preview-modal.textarea-focused .workflow-preview-nodes,
-.is-mobile .workflow-preview-modal.textarea-focused .workflow-preview-yaml-section {
+.is-mobile .workflow-preview-modal-content.textarea-focused .modal-drag-handle,
+.is-mobile .workflow-preview-modal-content.textarea-focused .workflow-preview-name,
+.is-mobile .workflow-preview-modal-content.textarea-focused .workflow-preview-nodes,
+.is-mobile .workflow-preview-modal-content.textarea-focused .workflow-preview-yaml-section {
   display: none !important;
 }
 
-.is-mobile .workflow-preview-modal.textarea-focused .modal-content {
+.is-mobile .workflow-preview-modal-content.textarea-focused {
   height: 100%;
   max-height: 100%;
   box-sizing: border-box;
 }
 
-.is-mobile .workflow-preview-modal.textarea-focused .workflow-preview-additional {
+.is-mobile .workflow-preview-modal-content.textarea-focused .workflow-preview-additional {
   flex: 1 1 auto;
   min-height: 0;
   max-height: calc(100% - 120px); /* Reserve space for label and buttons */
@@ -4811,12 +4811,12 @@
   overflow: hidden;
 }
 
-.is-mobile .workflow-preview-modal.textarea-focused .workflow-preview-additional label {
+.is-mobile .workflow-preview-modal-content.textarea-focused .workflow-preview-additional label {
   flex-shrink: 0;
   margin-bottom: 8px;
 }
 
-.is-mobile .workflow-preview-modal.textarea-focused .workflow-preview-additional-input {
+.is-mobile .workflow-preview-modal-content.textarea-focused .workflow-preview-additional-input {
   flex: 1 1 auto;
   min-height: 80px;
   max-height: 100%;
@@ -4825,7 +4825,7 @@
   box-sizing: border-box;
 }
 
-.is-mobile .workflow-preview-modal.textarea-focused .workflow-preview-buttons {
+.is-mobile .workflow-preview-modal-content.textarea-focused .workflow-preview-buttons {
   flex-shrink: 0;
   margin-top: auto;
 }
