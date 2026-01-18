@@ -4789,6 +4789,7 @@
 }
 
 /* Hide upper content when textarea is focused on mobile */
+.is-mobile .workflow-preview-modal.textarea-focused .modal-drag-handle,
 .is-mobile .workflow-preview-modal.textarea-focused .workflow-preview-name,
 .is-mobile .workflow-preview-modal.textarea-focused .workflow-preview-nodes,
 .is-mobile .workflow-preview-modal.textarea-focused .workflow-preview-yaml-section {
@@ -4797,9 +4798,15 @@
 
 .is-mobile .workflow-preview-modal.textarea-focused .workflow-preview-additional {
   flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 }
 
 .is-mobile .workflow-preview-modal.textarea-focused .workflow-preview-additional-input {
   flex: 1;
-  min-height: 150px;
+  min-height: 100px;
+  max-height: none;
+  resize: none;
 }
