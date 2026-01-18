@@ -4682,13 +4682,67 @@
 /* Mobile adjustments */
 .is-mobile .workflow-generation-modal {
   min-width: unset;
+  width: 95vw;
+  max-width: 95vw;
+  max-height: 85vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.is-mobile .workflow-generation-modal .modal-content {
+  flex: 1;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.is-mobile .workflow-generation-thinking {
+  min-height: 100px;
+  max-height: 200px;
 }
 
 .is-mobile .workflow-preview-modal {
   min-width: unset;
   max-width: unset;
+  width: 95vw;
+  max-height: 85vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.is-mobile .workflow-preview-modal .modal-content {
+  flex: 1;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 16px;
 }
 
 .is-mobile .workflow-preview-nodes {
-  max-height: 250px;
+  max-height: 200px;
+}
+
+.is-mobile .workflow-preview-yaml {
+  max-height: 120px;
+}
+
+.is-mobile .workflow-preview-buttons {
+  flex-direction: column;
+  gap: 8px;
+}
+
+.is-mobile .workflow-preview-buttons button {
+  width: 100%;
+  padding: 12px;
+}
+
+.is-mobile .workflow-preview-additional-input {
+  min-height: 60px;
+}
+
+/* When additional request input is shown, adjust layout for keyboard */
+.is-mobile .workflow-preview-additional:not(.is-hidden) ~ .workflow-preview-buttons {
+  position: sticky;
+  bottom: 0;
+  background: var(--background-primary);
+  padding-top: 8px;
+  margin-bottom: 0;
 }
