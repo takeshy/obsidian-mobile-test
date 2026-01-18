@@ -2998,14 +2998,78 @@
   word-break: break-word;
 }
 
-/* Mobile: stack comparison vertically */
-.is-mobile .ai-workflow-confirm-modal {
+/* Mobile: AI Workflow Modal */
+.is-mobile .ai-workflow-modal {
   min-width: unset;
+  width: 95vw;
+  max-width: 95vw;
+  max-height: 85vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.is-mobile .ai-workflow-modal .modal-content {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 16px;
+}
+
+.is-mobile .ai-workflow-modal .modal-drag-handle {
+  flex-shrink: 0;
+  padding: 12px;
+  margin: -12px -12px 12px -12px;
+}
+
+.is-mobile .ai-workflow-modal .modal-drag-handle h2 {
+  font-size: 16px;
 }
 
 .is-mobile .ai-workflow-name-input,
 .is-mobile .ai-workflow-path-input {
   min-width: 0;
+  width: 100%;
+}
+
+.is-mobile .ai-workflow-textarea {
+  min-height: 80px;
+  max-height: 120px;
+}
+
+.is-mobile .ai-workflow-model-row {
+  flex-direction: column;
+  align-items: stretch;
+  gap: 8px;
+}
+
+.is-mobile .ai-workflow-model-select {
+  width: 100%;
+}
+
+.is-mobile .ai-workflow-attachment-row {
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.is-mobile .ai-workflow-buttons {
+  flex-direction: column;
+  gap: 8px;
+}
+
+.is-mobile .ai-workflow-buttons button {
+  width: 100%;
+  padding: 12px;
+}
+
+.is-mobile .ai-workflow-hint {
+  font-size: 11px;
+}
+
+/* Mobile: AI Workflow Confirmation Modal */
+.is-mobile .ai-workflow-confirm-modal {
+  min-width: unset;
 }
 
 .is-mobile .ai-workflow-comparison {
