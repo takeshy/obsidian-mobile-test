@@ -4796,17 +4796,36 @@
   display: none !important;
 }
 
+.is-mobile .workflow-preview-modal.textarea-focused .modal-content {
+  height: 100%;
+  max-height: 100%;
+  box-sizing: border-box;
+}
+
 .is-mobile .workflow-preview-modal.textarea-focused .workflow-preview-additional {
-  flex: 1;
+  flex: 1 1 auto;
   min-height: 0;
+  max-height: calc(100% - 120px); /* Reserve space for label and buttons */
   display: flex;
   flex-direction: column;
   overflow: hidden;
 }
 
+.is-mobile .workflow-preview-modal.textarea-focused .workflow-preview-additional label {
+  flex-shrink: 0;
+  margin-bottom: 8px;
+}
+
 .is-mobile .workflow-preview-modal.textarea-focused .workflow-preview-additional-input {
-  flex: 1;
-  min-height: 100px;
-  max-height: none;
+  flex: 1 1 auto;
+  min-height: 80px;
+  max-height: 100%;
+  height: auto;
   resize: none;
+  box-sizing: border-box;
+}
+
+.is-mobile .workflow-preview-modal.textarea-focused .workflow-preview-buttons {
+  flex-shrink: 0;
+  margin-top: auto;
 }
