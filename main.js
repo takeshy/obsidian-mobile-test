@@ -725,7 +725,7 @@ Note: You are running in CLI mode with limited capabilities. You can read and se
 
 ---
 ${g("workflow.preview.additionalRequest")}
-${u}`:n;if(x.description=T,x.mode=this.mode,x.resolvedMentions=d.length>0?d:void 0,this.mode==="create"&&(x.name=a,r&&(x.outputPath=r.replace(/\{\{name\}\}/g,a))),this.mode==="modify"&&((v=this.confirmCheckbox)==null?void 0:v.checked)&&this.existingYaml){await R6e(this.app,this.existingYaml,x.yaml,x.explanation)?this.resolvePromise(x):this.resolvePromise(null);return}let b=await oU(this.app,x.yaml,x.nodes,x.name,u||"");b.result==="ok"?this.resolvePromise(x):b.result==="no"?await this.runGenerationLoop(T,m,a,r,s,l,d,b.additionalRequest,x.yaml):this.resolvePromise(null)}catch(C){_.close();let w=C instanceof Error?C.message:String(C);new yt.Notice(`Error: ${w}`),this.resolvePromise(null)}}buildSystemPrompt(){return`You are a workflow generator for Obsidian. You create and modify workflows in YAML format.
+${u}`:n;if(x.description=T,x.mode=this.mode,x.resolvedMentions=d.length>0?d:void 0,this.mode==="create"&&(x.name=a,r&&(x.outputPath=r.replace(/\{\{name\}\}/g,a))),this.mode==="modify"&&((v=this.confirmCheckbox)==null?void 0:v.checked)&&this.existingYaml){await R6e(this.app,this.existingYaml,x.yaml,x.explanation)?this.resolvePromise(x):this.resolvePromise(null);return}let b=await oU(this.app,x.yaml,x.nodes,x.name,u||n);b.result==="ok"?this.resolvePromise(x):b.result==="no"?await this.runGenerationLoop(T,m,a,r,s,l,d,b.additionalRequest,x.yaml):this.resolvePromise(null)}catch(C){_.close();let w=C instanceof Error?C.message:String(C);new yt.Notice(`Error: ${w}`),this.resolvePromise(null)}}buildSystemPrompt(){return`You are a workflow generator for Obsidian. You create and modify workflows in YAML format.
 
 ${tU}
 
