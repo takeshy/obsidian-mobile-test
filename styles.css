@@ -5153,25 +5153,86 @@
 
 /* Mobile styles for execution history select modal */
 .is-mobile .execution-history-select-modal {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  max-width: none !important;
+  max-height: none !important;
   min-width: auto;
-  max-width: none;
-  width: 100%;
+  margin: 0 !important;
+  border-radius: 0 !important;
+  transform: none !important;
+}
+
+.is-mobile .execution-history-select-modal .modal-content {
+  display: flex;
+  flex-direction: column;
   height: 100%;
+  padding: 12px;
+  box-sizing: border-box;
+}
+
+.is-mobile .execution-history-select-modal .modal-drag-handle {
+  flex-shrink: 0;
+  cursor: default;
+  margin: -12px -12px 12px -12px;
+  padding: 12px;
 }
 
 .is-mobile .execution-history-select-content {
+  flex: 1;
   flex-direction: column;
   max-height: none;
-  min-height: auto;
+  min-height: 0;
+  overflow: hidden;
 }
 
 .is-mobile .execution-history-runs-column {
   flex: 0 0 auto;
-  max-height: 150px;
+  max-height: 120px;
+  margin-bottom: 12px;
+}
+
+.is-mobile .execution-history-runs-column h3 {
+  font-size: 13px;
+  margin-bottom: 6px;
 }
 
 .is-mobile .execution-history-steps-column {
   flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.is-mobile .execution-history-steps-column h3 {
+  font-size: 13px;
+  margin-bottom: 6px;
+  flex-shrink: 0;
+}
+
+.is-mobile .execution-history-steps-list {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+}
+
+.is-mobile .execution-history-select-buttons {
+  flex-shrink: 0;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--background-modifier-border);
+}
+
+.is-mobile .execution-history-select-buttons button {
+  width: 100%;
+  padding: 12px;
 }
 
 /* ===============================================
