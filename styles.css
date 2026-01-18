@@ -5513,3 +5513,28 @@
   width: 100%;
   padding: 12px;
 }
+
+/* Status bar items for edit history */
+.gemini-helper-status-bar-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+  padding: 0 8px;
+  border-radius: 4px;
+  transition: background-color 0.15s ease;
+}
+
+.gemini-helper-status-bar-item:hover {
+  background-color: var(--background-modifier-hover);
+}
+
+.gemini-helper-status-bar-icon {
+  display: flex;
+  align-items: center;
+}
+
+.gemini-helper-status-bar-icon svg {
+  width: 14px;
+  height: 14px;
+}
