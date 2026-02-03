@@ -954,6 +954,33 @@
   opacity: 0.9;
 }
 
+/* Edit Additional Request */
+.gemini-helper-edit-additional {
+  margin-bottom: 10px;
+}
+
+.gemini-helper-edit-additional-input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 4px;
+  background: var(--background-primary);
+  resize: vertical;
+  font-family: inherit;
+  font-size: 13px;
+  color: var(--text-normal);
+  box-sizing: border-box;
+}
+
+.gemini-helper-edit-additional-input:focus {
+  border-color: var(--interactive-accent);
+  outline: none;
+}
+
+.gemini-helper-edit-additional-input::placeholder {
+  color: var(--text-muted);
+}
+
 /* Edit Status */
 .gemini-helper-edit-status {
   margin-top: 10px;
@@ -1454,6 +1481,22 @@
   padding-left: 1.5em;
 }
 
+/* CLI Path Modal */
+.gemini-helper-cli-path-modal .gemini-helper-cli-path-input {
+  width: 100%;
+  min-width: 400px;
+}
+
+.gemini-helper-cli-path-note {
+  margin-top: 0.5em;
+  padding: 0.5em;
+  background-color: var(--background-modifier-message);
+  border-radius: 4px;
+  font-size: 0.9em;
+  color: var(--text-muted);
+  white-space: pre-line;
+}
+
 /* HTML Preview Modal */
 .gemini-helper-html-preview-header h3 {
   margin: 0;
@@ -1503,6 +1546,18 @@
   overflow: hidden;
   display: flex;
   flex-direction: column;
+}
+
+.gemini-helper-tab-panel {
+  display: none;
+  height: 100%;
+}
+
+.gemini-helper-tab-panel.is-active {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-height: 0;
 }
 
 /* ===============================================
@@ -1903,6 +1958,9 @@
 .workflow-node-editor-modal {
   padding: 20px;
   min-width: 400px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 }
 
 .workflow-node-editor-modal h2 {
@@ -1910,8 +1968,45 @@
   margin-bottom: 16px;
 }
 
+.workflow-node-editor-scroll {
+  flex: 1;
+  overflow-y: auto;
+  min-height: 0;
+  padding-right: 8px;
+}
+
 .workflow-node-editor-textarea {
   width: 100%;
+  max-height: 200px;
+  resize: vertical;
+}
+
+/* MCP checkboxes in node editor */
+.workflow-mcp-checkboxes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.workflow-mcp-checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 8px;
+  background: var(--background-secondary);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.workflow-mcp-checkbox-label input[type="checkbox"] {
+  margin: 0;
+}
+
+.workflow-mcp-checkbox-label input[type="checkbox"]:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
 /* Path suggestion dropdown for workflow node editor */
@@ -1978,7 +2073,91 @@
 
 .workflow-history-list-panel h3 {
   margin-top: 0;
+  margin-bottom: 0;
+}
+
+.workflow-history-list-header {
   margin-bottom: 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--background-modifier-border);
+}
+
+.workflow-history-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.workflow-history-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.workflow-history-select-all {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--text-muted);
+  cursor: pointer;
+  user-select: none;
+}
+
+.workflow-history-select-all:hover {
+  color: var(--text-normal);
+}
+
+.workflow-history-select-all input {
+  margin: 0;
+  cursor: pointer;
+  width: 14px;
+  height: 14px;
+}
+
+.workflow-history-delete-selected-btn {
+  padding: 6px 12px;
+  font-size: 12px;
+  background-color: var(--background-modifier-error);
+  color: var(--text-on-accent);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.workflow-history-delete-selected-btn:hover {
+  filter: brightness(1.1);
+}
+
+.workflow-history-checkbox {
+  margin: 0;
+  cursor: pointer;
+  flex-shrink: 0;
+  width: 14px;
+  height: 14px;
+}
+
+.workflow-history-item-content {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.workflow-history-item-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.workflow-history-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 2px;
 }
 
 .workflow-history-list {
@@ -1995,6 +2174,9 @@
 }
 
 .workflow-history-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
   padding: 10px 12px;
   border-bottom: 1px solid var(--background-modifier-border);
   cursor: pointer;
@@ -2040,12 +2222,12 @@
 .workflow-history-time {
   font-size: 12px;
   font-weight: 500;
+  line-height: 1.3;
 }
 
 .workflow-history-duration {
   font-size: 11px;
   color: var(--text-muted);
-  margin-top: 2px;
 }
 
 .workflow-history-status-text {
@@ -2072,6 +2254,8 @@
   border: 1px solid var(--background-modifier-border);
   border-radius: 6px;
   padding: 12px;
+  user-select: text;
+  -webkit-user-select: text;
 }
 
 .workflow-detail-header {
@@ -2169,11 +2353,51 @@
   overflow-x: auto;
   white-space: pre-wrap;
   word-break: break-all;
+  user-select: text;
+  -webkit-user-select: text;
+  cursor: text;
 }
 
 .workflow-step-pre-scrollable {
   max-height: 300px;
   overflow-y: auto;
+  user-select: text;
+  -webkit-user-select: text;
+  cursor: text;
+}
+
+.workflow-step-thinking {
+  margin-top: 8px;
+  margin-bottom: 8px;
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 4px;
+  background-color: var(--background-secondary);
+}
+
+.workflow-step-thinking-summary {
+  padding: 8px;
+  cursor: pointer;
+  font-size: 12px;
+  color: var(--text-muted);
+  user-select: none;
+}
+
+.workflow-step-thinking-summary:hover {
+  background-color: var(--background-modifier-hover);
+}
+
+.workflow-step-thinking pre {
+  margin: 0;
+  padding: 8px;
+  border-top: 1px solid var(--background-modifier-border);
+  font-size: 11px;
+  white-space: pre-wrap;
+  word-break: break-word;
+  max-height: 200px;
+  overflow-y: auto;
+  user-select: text;
+  -webkit-user-select: text;
+  cursor: text;
 }
 
 .workflow-btn-disabled {
@@ -2461,6 +2685,46 @@
   font-size: 13px;
   border-radius: 4px;
   cursor: pointer;
+}
+
+/* Utility classes */
+.gemini-helper-hidden {
+  display: none;
+}
+
+/* Edit Confirmation Additional Request */
+.gemini-helper-edit-additional-container {
+  padding: 0 16px 16px;
+}
+
+.gemini-helper-edit-additional-label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+.gemini-helper-edit-confirm-modal .gemini-helper-edit-additional-input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 4px;
+  background: var(--background-primary);
+  resize: vertical;
+  font-family: inherit;
+  font-size: 13px;
+  color: var(--text-normal);
+  box-sizing: border-box;
+  min-height: 80px;
+}
+
+.gemini-helper-edit-confirm-modal .gemini-helper-edit-additional-input:focus {
+  border-color: var(--interactive-accent);
+  outline: none;
+}
+
+.gemini-helper-edit-confirm-modal .gemini-helper-edit-additional-input::placeholder {
+  color: var(--text-muted);
 }
 
 /* ===============================================
@@ -3584,10 +3848,14 @@
   font-size: 12px;
   line-height: 1.5;
   overflow-x: auto;
+  user-select: text;
+  -webkit-user-select: text;
 }
 
 .gemini-helper-diff-line {
   white-space: pre;
+  user-select: text;
+  -webkit-user-select: text;
 }
 
 .gemini-helper-diff-hunk {
@@ -3717,6 +3985,109 @@
   background: transparent;
 }
 
+/* Tool settings modal (for vault + MCP) */
+.gemini-helper-tool-settings-modal {
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  margin-bottom: 4px;
+  min-width: 200px;
+  background: var(--background-secondary);
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 100;
+  padding: 12px;
+}
+
+.gemini-helper-tool-settings-content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.gemini-helper-tool-settings-row {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.gemini-helper-tool-settings-row > label {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.gemini-helper-tool-settings-row > label:has(input[type="checkbox"]) {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--text-normal);
+  cursor: pointer;
+}
+
+.gemini-helper-tool-settings-row > label:has(input[type="checkbox"]:disabled) {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.gemini-helper-tool-settings-row select {
+  width: 100%;
+  padding: 6px 8px;
+  font-size: 12px;
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 4px;
+  background: var(--background-primary);
+  color: var(--text-normal);
+}
+
+.gemini-helper-tool-settings-row select:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.gemini-helper-tool-settings-close {
+  padding: 6px 12px;
+  font-size: 12px;
+  border: none;
+  border-radius: 4px;
+  background: var(--interactive-accent);
+  color: var(--text-on-accent);
+  cursor: pointer;
+  transition: background 0.1s;
+}
+
+.gemini-helper-tool-settings-close:hover {
+  background: var(--interactive-accent-hover);
+}
+
+/* MCP server list in tool settings modal */
+.gemini-helper-mcp-server-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  max-height: 150px;
+  overflow-y: auto;
+  padding: 4px 0;
+}
+
+.gemini-helper-mcp-server-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--text-normal);
+  cursor: pointer;
+}
+
+.gemini-helper-mcp-server-item:has(input:disabled) {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.gemini-helper-mcp-server-item input[type="checkbox"] {
+  margin: 0;
+}
+
 /* Mobile styles for vault tool */
 .is-mobile .gemini-helper-vault-tool-btn {
   width: 44px;
@@ -3775,6 +4146,55 @@
 /* Ensure Setting items have relative positioning for suggestions */
 .workflow-node-editor-modal .setting-item {
   position: relative;
+}
+
+/* Mobile: Node Editor Modal */
+.is-mobile .workflow-node-editor-modal {
+  min-width: unset;
+  width: 95vw;
+  max-width: 95vw;
+  padding: 12px;
+}
+
+.is-mobile .workflow-node-editor-modal .modal-drag-handle h2 {
+  font-size: 16px;
+}
+
+.is-mobile .workflow-node-editor-modal .setting-item {
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.is-mobile .workflow-node-editor-modal .setting-item-info {
+  padding-bottom: 4px;
+}
+
+.is-mobile .workflow-node-editor-modal .setting-item-control {
+  justify-content: stretch;
+}
+
+.is-mobile .workflow-node-editor-modal .setting-item-control input[type="text"],
+.is-mobile .workflow-node-editor-modal .setting-item-control textarea,
+.is-mobile .workflow-node-editor-modal .setting-item-control select {
+  width: 100% !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
+  box-sizing: border-box;
+}
+
+.is-mobile .workflow-node-editor-modal .workflow-node-editor-textarea {
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+.is-mobile .workflow-node-editor-modal .workflow-modal-buttons {
+  flex-direction: column;
+  gap: 8px;
+}
+
+.is-mobile .workflow-node-editor-modal .workflow-modal-buttons button {
+  width: 100%;
+  padding: 12px;
 }
 
 /* ===============================================
@@ -4450,6 +4870,17 @@
   margin: 0;
 }
 
+.workflow-generation-model-badge {
+  margin-left: 8px;
+  padding: 2px 8px;
+  font-size: 0.75em;
+  font-weight: normal;
+  background: var(--background-modifier-success);
+  color: var(--text-on-accent);
+  border-radius: 4px;
+  vertical-align: middle;
+}
+
 .workflow-generation-request {
   margin-bottom: 16px;
   padding: 12px;
@@ -4473,6 +4904,21 @@
   word-break: break-word;
   max-height: 100px;
   overflow-y: auto;
+}
+
+.workflow-generation-history-info {
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+.workflow-generation-history-badge {
+  display: inline-block;
+  padding: 4px 10px;
+  background-color: var(--background-modifier-success);
+  color: var(--text-on-accent);
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 500;
 }
 
 .workflow-generation-thinking-section {
@@ -5419,6 +5865,8 @@
   background: var(--background-primary-alt);
   border: 1px solid var(--background-modifier-border);
   border-radius: 4px;
+  user-select: text;
+  -webkit-user-select: text;
 }
 
 .workflow-execution-node-detail.workflow-step-success {
@@ -5447,6 +5895,8 @@
   font-size: 12px;
   color: var(--text-normal);
   white-space: pre-wrap;
+  user-select: text;
+  -webkit-user-select: text;
 }
 
 .workflow-execution-status {
@@ -5512,4 +5962,205 @@
 .is-mobile .workflow-execution-buttons button {
   width: 100%;
   padding: 12px;
+}
+
+/* MCP test connection status */
+.gemini-helper-mcp-test-status {
+  font-size: 12px;
+  margin-right: 8px;
+}
+
+.gemini-helper-mcp-status--success {
+  color: var(--color-green);
+}
+
+.gemini-helper-mcp-status--error {
+  color: var(--color-red);
+}
+
+.gemini-helper-mcp-tools-count {
+  font-weight: 500;
+}
+
+.gemini-helper-mcp-tools-list {
+  margin-top: 4px;
+  font-size: 11px;
+  color: var(--text-muted);
+  word-break: break-word;
+}
+
+.gemini-helper-mcp-test-required {
+  font-size: 12px;
+  color: var(--text-warning);
+  margin-bottom: 12px;
+}
+
+.gemini-helper-mcp-server-name {
+  margin-right: 4px;
+}
+
+.gemini-helper-mcp-tool-hint {
+  font-size: 10px;
+  color: var(--text-muted);
+}
+
+/* Slash Command Modal - MCP Checkbox Styles */
+.gemini-helper-mcp-checkboxes {
+  margin-top: 8px;
+}
+
+.gemini-helper-mcp-checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 0;
+  cursor: pointer;
+}
+
+.gemini-helper-mcp-checkbox-label input[type="checkbox"] {
+  margin: 0;
+}
+
+.gemini-helper-mcp-server-checkboxes {
+  margin-left: 20px;
+  border-left: 2px solid var(--background-modifier-border);
+  padding-left: 12px;
+  margin-top: 4px;
+}
+
+/* Edit History - Copy Input */
+.gemini-helper-copy-input {
+  width: 100%;
+}
+
+/* MCP Apps */
+.gemini-helper-mcp-app {
+  margin-top: 12px;
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--background-primary);
+}
+
+.gemini-helper-mcp-app-expanded {
+  position: fixed;
+  top: 10%;
+  left: 10%;
+  right: 10%;
+  bottom: 10%;
+  z-index: 1000;
+  border: 2px solid var(--interactive-accent);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.gemini-helper-mcp-app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  background: var(--background-secondary);
+  border-bottom: 1px solid var(--background-modifier-border);
+}
+
+.gemini-helper-mcp-app-indicator {
+  font-size: 12px;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.gemini-helper-mcp-app-expand-btn {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-size: 16px;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.gemini-helper-mcp-app-expand-btn:hover {
+  background: var(--background-modifier-hover);
+  color: var(--text-normal);
+}
+
+.gemini-helper-mcp-app-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 24px;
+  color: var(--text-muted);
+}
+
+.gemini-helper-mcp-app-spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid var(--background-modifier-border);
+  border-top-color: var(--interactive-accent);
+  border-radius: 50%;
+  animation: gemini-helper-spin 0.8s linear infinite;
+}
+
+@keyframes gemini-helper-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.gemini-helper-mcp-app-error {
+  padding: 12px;
+  color: var(--text-error);
+  background: var(--background-modifier-error);
+  border-radius: 4px;
+  margin-top: 8px;
+}
+
+/* MCP App Modal - uses gemini-helper-modal-resizable for drag/resize */
+.gemini-helper-mcp-app-modal-content {
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.gemini-helper-mcp-app-modal-buttons {
+  flex-shrink: 0;
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--background-modifier-border);
+}
+
+.gemini-helper-mcp-app-iframe {
+  flex: 1;
+  width: 100%;
+  height: 400px;
+  min-height: 200px;
+  border: none;
+  border-radius: 4px;
+  background: var(--background-primary);
+}
+
+.gemini-helper-mcp-app-iframe-expanded {
+  height: 80vh;
+}
+
+/* MCP App button in workflow step details */
+.workflow-step-mcp-app-btn {
+  margin-top: 8px;
+  padding: 6px 12px;
+  background: var(--interactive-accent);
+  color: var(--text-on-accent);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.workflow-step-mcp-app-btn:hover {
+  background: var(--interactive-accent-hover);
 }
