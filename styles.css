@@ -8693,6 +8693,24 @@
   padding: 8px;
   border-top: 1px solid var(--background-modifier-border);
 }
+/* Mobile: while a memo input is focused, pin it above the on-screen
+   keyboard (same approach as the timeline composer) — otherwise iOS
+   scrolls the whole app out of view to reveal the input. */
+.is-mobile .llm-hub-db-memo-compose.is-keyboard-focused,
+.is-mobile .llm-hub-db-memo-edit.is-keyboard-focused {
+  position: fixed;
+  left: 12px;
+  right: 12px;
+  bottom: calc(var(--llm-hub-db-memo-keyboard-inset, 0px) + env(safe-area-inset-bottom) + 12px);
+  z-index: 1000;
+  max-height: min(420px, calc(100vh - var(--llm-hub-db-memo-keyboard-inset, 0px) - 40px));
+  overflow-y: auto;
+  padding: 12px;
+  background: var(--background-primary);
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 18px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.22);
+}
 .llm-hub-db-memo-relation {
   display: flex;
   align-items: flex-start;
