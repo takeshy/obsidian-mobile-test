@@ -8098,12 +8098,22 @@
 }
 /* Mobile: iOS long-press selection keeps expanding until it hits a
    user-select: none boundary, so a selectable dashboard chrome means one
-   long-press can select the whole board. Only reading surfaces
-   (File/Markdown content, PDF text layer) keep their own user-select: text. */
+   long-press can select the whole board. Obsidian's own styles (e.g. the
+   native Bases table) re-enable selection at the element level inside
+   widgets, so this needs !important on both sides: everything under the
+   dashboard is non-selectable, then reading surfaces and text inputs are
+   switched back on (the later rule wins the equal-importance tie). */
 .is-mobile .llm-hub-db-root,
-.is-mobile .llm-hub-db-cell-content {
-  user-select: none;
-  -webkit-user-select: none;
+.is-mobile .llm-hub-db-root * {
+  user-select: none !important;
+  -webkit-user-select: none !important;
+}
+.is-mobile .llm-hub-db-file-content,
+.is-mobile .llm-hub-db-file-content *,
+.is-mobile .llm-hub-db-root textarea,
+.is-mobile .llm-hub-db-root input {
+  user-select: text !important;
+  -webkit-user-select: text !important;
 }
 
 /* Snap preview */
@@ -8752,6 +8762,11 @@
   border-radius: 6px;
   background: var(--background-primary);
   box-shadow: var(--shadow-l);
+}
+/* Mobile: the menu floats without a backdrop so the selection handles stay
+   usable; it needs its own stacking level. */
+.llm-hub-db-selection-menu-floating .llm-hub-db-selection-menu {
+  z-index: var(--layer-popover, 1000);
 }
 .llm-hub-db-selection-menu-quote {
   max-height: 96px;
