@@ -8045,7 +8045,7 @@
   min-height: 100%;
 }
 .llm-hub-db-grid.is-maximized {
-  display: block !important;
+  display: block;
   height: 100%;
 }
 
@@ -8083,9 +8083,6 @@
 .llm-hub-db-cell.is-maximized {
   position: absolute;
   inset: 0;
-  width: auto !important;
-  height: auto !important;
-  transform: none !important;
   border-color: var(--background-modifier-border);
   box-shadow: var(--shadow-s);
   z-index: 40;
@@ -8098,6 +8095,15 @@
   overflow: auto;
   user-select: text;
   -webkit-user-select: text;
+}
+/* Mobile: iOS long-press selection keeps expanding until it hits a
+   user-select: none boundary, so a selectable dashboard chrome means one
+   long-press can select the whole board. Only reading surfaces
+   (File/Markdown content, PDF text layer) keep their own user-select: text. */
+.is-mobile .llm-hub-db-root,
+.is-mobile .llm-hub-db-cell-content {
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 /* Snap preview */
