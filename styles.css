@@ -8169,9 +8169,6 @@
   z-index: 10;
   opacity: 1;
 }
-.llm-hub-db-cell[data-widget-type="file"] > .llm-hub-db-actions {
-  right: 64px;
-}
 .llm-hub-db-iconbtn {
   display: inline-flex;
   align-items: center;
@@ -8328,7 +8325,9 @@
   align-items: center;
   gap: 6px;
   flex: 0 0 auto;
-  padding: 4px 8px;
+  /* Right padding reserves room for the cell's maximize/settings buttons,
+     which are absolutely positioned at the cell's top-right corner. */
+  padding: 4px 64px 4px 8px;
   border-bottom: 1px solid var(--background-modifier-border);
 }
 .llm-hub-db-file-main {
