@@ -8159,6 +8159,10 @@
   opacity: 0;
   pointer-events: none;
 }
+.is-mobile .llm-hub-db-cell[data-widget-type="file"]:focus-within .llm-hub-db-drag {
+  opacity: 1;
+  pointer-events: auto;
+}
 .llm-hub-db-actions {
   position: absolute;
   top: 2px;
