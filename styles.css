@@ -8040,6 +8040,9 @@
   padding: 12px;
   position: relative;
 }
+.is-mobile .llm-hub-db-scroll {
+  padding-bottom: calc(env(safe-area-inset-bottom) + 96px);
+}
 .llm-hub-db-grid {
   position: relative;
   min-height: 100%;
@@ -8733,13 +8736,18 @@
 .is-mobile .llm-hub-db-memo-compose-launcher {
   display: flex;
   flex: 0 0 auto;
-  padding: 8px 8px calc(env(safe-area-inset-bottom) + 86px);
+  padding: 8px;
   border-top: 1px solid var(--background-modifier-border);
   background: var(--background-secondary);
 }
 .is-mobile .llm-hub-db-memo-compose-launcher .llm-hub-db-primary-btn {
   width: 100%;
   justify-content: center;
+  min-height: 36px;
+  border-radius: 6px;
+  background: var(--interactive-accent);
+  color: var(--text-on-accent);
+  font-weight: 600;
 }
 .is-mobile .llm-hub-db-memo-compose-backdrop {
   position: fixed;
