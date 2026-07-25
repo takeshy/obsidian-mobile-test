@@ -3675,3 +3675,25 @@
   border-radius: 10px;
   touch-action: manipulation;
 }
+
+/* Secret manager on mobile: one scroll container, not two.
+   The list used to be its own `overflow: auto` box sized by flex, so whenever
+   the on-screen keyboard shrank the widget the list was the part that
+   collapsed — the toolbar kept its content height and the entries vanished.
+   Here the whole widget scrolls and the list is sized by its content, so it
+   cannot be squeezed to nothing regardless of the container height. */
+.is-mobile .dashboard-hub-db-secret-manager {
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+}
+.is-mobile .dashboard-hub-db-secret-toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+}
+.is-mobile .dashboard-hub-db-secret-list {
+  flex: 0 0 auto;
+  min-height: 0;
+  overflow: visible;
+}
