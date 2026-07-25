@@ -1844,20 +1844,39 @@
 .dashboard-hub-db-secret-dialog textarea.dashboard-hub-db-secret-value { width: 100%; height: auto; min-height: 140px; }
 .dashboard-hub-db-secret-error { margin: 0; color: var(--text-error); font-size: var(--font-ui-small); }
 .dashboard-hub-spin { animation: dashboard-hub-db-spin 0.8s linear infinite; }
-.is-mobile .dashboard-hub-db-secret-overlay.is-create {
+/* All three overlays (create / view / unlock) are portalled to the body on
+   mobile, so they need position:fixed here — the base rule is absolute, which
+   inside a widget cell clips them to that cell. Top-anchored and scrollable
+   per the mobile modal convention at the top of this file. */
+.is-mobile .dashboard-hub-db-secret-overlay {
   position: fixed;
   inset: 0;
   z-index: 1000;
   align-items: flex-start;
-  padding: calc(env(safe-area-inset-top) + 8px) 8px calc(var(--dashboard-hub-db-secret-keyboard-inset, 0px) + env(safe-area-inset-bottom) + 8px);
+  padding: calc(env(safe-area-inset-top) + 12px) 8px 8px;
 }
-.is-mobile .dashboard-hub-db-secret-overlay.is-create .dashboard-hub-db-secret-dialog {
+.is-mobile .dashboard-hub-db-secret-overlay .dashboard-hub-db-secret-dialog {
   width: 100%;
-  height: calc(100dvh - var(--dashboard-hub-db-secret-keyboard-inset, 0px) - env(safe-area-inset-top) - env(safe-area-inset-bottom) - 16px);
-  max-height: none;
+  /* max-height, not height: a fixed height forces the box under the keyboard
+     and leaves the footer unreachable when 100dvh does not account for it. */
+  height: auto;
+  max-height: calc(100dvh - var(--dashboard-hub-db-secret-keyboard-inset, 0px) - env(safe-area-inset-top) - 24px);
   border-radius: 16px;
 }
-.is-mobile .dashboard-hub-db-secret-overlay.is-create .dashboard-hub-db-secret-dialog-body {
+.is-mobile .dashboard-hub-db-secret-overlay .dashboard-hub-db-secret-dialog-body,
+.is-mobile .dashboard-hub-db-secret-overlay .dashboard-hub-db-secret-unlock,
+.is-mobile .dashboard-hub-db-secret-overlay .dashboard-hub-db-secret-edit-form,
+.is-mobile .dashboard-hub-db-secret-overlay .dashboard-hub-db-secret-detail {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+}
+/* The compact unlock dialog is a plain form with no scroll container of its
+   own, so it has to scroll as a whole. */
+.is-mobile .dashboard-hub-db-secret-overlay .dashboard-hub-db-secret-dialog.is-compact {
+  overflow-y: auto;
   overscroll-behavior: contain;
   -webkit-overflow-scrolling: touch;
 }
@@ -3440,4 +3459,35 @@
   border-radius: 10px;
   font-size: var(--font-ui-small);
   touch-action: manipulation;
+}
+
+/* Secret dialogs: 38px fields and 34px icon buttons are desktop sizes. */
+.is-mobile .dashboard-hub-db-secret-dialog input {
+  height: 44px;
+  min-height: 44px;
+  padding: 0 12px;
+  border-radius: 10px;
+}
+.is-mobile .dashboard-hub-db-secret-dialog textarea {
+  min-height: 96px;
+  padding: 10px 12px;
+  border-radius: 10px;
+}
+.is-mobile .dashboard-hub-db-secret-dialog textarea.is-secret {
+  height: auto;
+  min-height: 60px;
+}
+.is-mobile .dashboard-hub-db-secret-dialog-footer button,
+.is-mobile .dashboard-hub-db-secret-actions button,
+.is-mobile .dashboard-hub-db-secret-unlock button {
+  flex: 1;
+  min-height: 44px;
+  border-radius: 12px;
+  font-size: var(--font-ui-small);
+  font-weight: 600;
+  touch-action: manipulation;
+}
+.is-mobile .dashboard-hub-db-secret-metadata-row input {
+  height: 44px;
+  min-height: 44px;
 }
