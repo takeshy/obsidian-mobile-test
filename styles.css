@@ -3639,3 +3639,11 @@
 .dashboard-hub-keyboard-done:active {
   background: var(--interactive-accent-hover);
 }
+
+/* Dashboard toolbar on mobile: thumb-sized buttons. */
+.is-mobile .dashboard-hub-db-toolbtn {
+  min-height: 40px;
+  padding: 0 10px;
+  border-radius: 10px;
+  touch-action: manipulation;
+}
