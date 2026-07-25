@@ -1,6 +1,24 @@
 /* Dashboard (.dashboard widget grid)                                     */
 /* ===================================================================== */
 
+/* Mobile modal convention
+   -----------------------
+   Any form that takes text input on mobile is anchored to the TOP of the
+   screen and scrolls internally, rather than being centred or pinned to the
+   bottom. The on-screen keyboard eats the bottom half of the viewport, so a
+   bottom-anchored or centred dialog is exactly what gets covered — and when
+   the keyboard-inset measurement is off, a `bottom`-anchored dialog slides
+   off-screen entirely instead of degrading gracefully.
+
+   The shape is:
+     position: fixed;
+     top: calc(env(safe-area-inset-top) + 12px);
+     max-height: calc(100dvh - <widget>-keyboard-inset - safe-area-top - 24px);
+     overflow-y: auto;
+
+   The per-widget --dashboard-hub-db-*-keyboard-inset variables (set from JS
+   off visualViewport) now only shrink the height; they never move the box. */
+
 .dashboard-hub-dashboard-container {
   height: 100%;
   overflow: hidden;
@@ -877,10 +895,12 @@
   position: fixed;
   left: 12px;
   right: 12px;
-  bottom: calc(var(--dashboard-hub-db-memo-keyboard-inset, 0px) + env(safe-area-inset-bottom) + 12px);
+  top: calc(env(safe-area-inset-top) + 12px);
   z-index: 1000;
-  max-height: min(420px, calc(100dvh - var(--dashboard-hub-db-memo-keyboard-inset, 0px) - env(safe-area-inset-top) - 40px));
+  max-height: calc(100dvh - var(--dashboard-hub-db-memo-keyboard-inset, 0px) - env(safe-area-inset-top) - 24px);
   overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
   padding: 12px;
   background: var(--background-primary);
   border: 1px solid var(--background-modifier-border);
@@ -1895,15 +1915,17 @@
 }
 .is-mobile .modal.dashboard-hub-db-kanban-new-card-modal {
   position: fixed;
-  top: auto;
+  top: calc(env(safe-area-inset-top) + 12px);
   right: 12px;
-  bottom: calc(var(--dashboard-hub-db-kanban-keyboard-inset, 0px) + env(safe-area-inset-bottom) + 12px);
+  bottom: auto;
   left: 12px;
   width: auto;
   max-width: none;
-  max-height: calc(100dvh - var(--dashboard-hub-db-kanban-keyboard-inset, 0px) - env(safe-area-inset-top) - env(safe-area-inset-bottom) - 24px);
+  max-height: calc(100dvh - var(--dashboard-hub-db-kanban-keyboard-inset, 0px) - env(safe-area-inset-top) - 24px);
   margin: 0;
   overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
 }
 .dashboard-hub-db-kanban {
   display: flex;
@@ -2501,15 +2523,24 @@
 .dashboard-hub-db-calendar-modal-close { position: sticky; z-index: 2; top: 10px; float: right; display: grid; width: 30px; height: 30px; margin: 10px 10px -40px 0; place-items: center; padding: 0; border: 0; border-radius: 50%; background: var(--background-secondary); color: var(--text-muted); box-shadow: none; }
 .dashboard-hub-db-calendar-modal-close:hover { background: var(--background-modifier-hover); color: var(--text-normal); }
 
+/* Top-anchored and scrollable on narrow screens rather than a bottom sheet:
+   a sheet pinned to the bottom is the first thing the on-screen keyboard
+   covers. See the mobile modal convention above. */
 @media (max-width: 560px) {
-  .dashboard-hub-db-calendar-modal-backdrop { align-items: end; padding: 0; }
-  .dashboard-hub-db-calendar-modal { width: 100vw; max-height: 88vh; border-radius: var(--radius-l) var(--radius-l) 0 0; }
-}
-.is-mobile .dashboard-hub-db-calendar-modal-backdrop.is-event-form-open {
-  padding-bottom: calc(var(--dashboard-hub-db-calendar-keyboard-inset, 0px) + env(safe-area-inset-bottom));
+  .dashboard-hub-db-calendar-modal-backdrop {
+    align-items: start;
+    padding: calc(env(safe-area-inset-top) + 12px) 0 0;
+  }
+  .dashboard-hub-db-calendar-modal {
+    width: 100vw;
+    max-height: calc(100dvh - env(safe-area-inset-top) - 24px);
+    border-radius: var(--radius-l) var(--radius-l) 0 0;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+  }
 }
 .is-mobile .dashboard-hub-db-calendar-modal-backdrop.is-event-form-open .dashboard-hub-db-calendar-modal {
-  max-height: calc(100dvh - var(--dashboard-hub-db-calendar-keyboard-inset, 0px) - env(safe-area-inset-top) - env(safe-area-inset-bottom) - 12px);
+  max-height: calc(100dvh - var(--dashboard-hub-db-calendar-keyboard-inset, 0px) - env(safe-area-inset-top) - 24px);
 }
 
 .dashboard-hub-db-calendar-detail-heading { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
@@ -2933,14 +2964,19 @@
   background: rgba(0, 0, 0, 0.24);
   box-shadow: none;
 }
+/* Anchored to the top of the screen and scrollable — see the mobile modal
+   convention above. The keyboard inset only shrinks the height, so the form
+   never gets pushed off-screen when the on-screen keyboard opens. */
 .is-mobile .dashboard-hub-db-timeline-composer.is-mobile-modal {
   position: fixed;
   left: 12px;
   right: 12px;
-  bottom: calc(var(--dashboard-hub-db-timeline-keyboard-inset, 0px) + env(safe-area-inset-bottom) + 12px);
+  top: calc(env(safe-area-inset-top) + 12px);
   z-index: 1000;
-  max-height: min(420px, calc(100dvh - var(--dashboard-hub-db-timeline-keyboard-inset, 0px) - env(safe-area-inset-top) - 40px));
+  max-height: calc(100dvh - var(--dashboard-hub-db-timeline-keyboard-inset, 0px) - env(safe-area-inset-top) - 24px);
   overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
   padding: 12px;
   border: 1px solid var(--background-modifier-border);
   border-radius: 18px;
@@ -2955,10 +2991,12 @@
   position: fixed;
   left: 12px;
   right: 12px;
-  bottom: calc(var(--dashboard-hub-db-timeline-keyboard-inset, 0px) + env(safe-area-inset-bottom) + 12px);
+  top: calc(env(safe-area-inset-top) + 12px);
   z-index: 1000;
-  max-height: min(420px, calc(100vh - var(--dashboard-hub-db-timeline-keyboard-inset, 0px) - 40px));
+  max-height: calc(100dvh - var(--dashboard-hub-db-timeline-keyboard-inset, 0px) - env(safe-area-inset-top) - 24px);
   overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
   padding: 12px;
   background: var(--background-primary);
   border: 1px solid var(--background-modifier-border);
