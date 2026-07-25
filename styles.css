@@ -3738,3 +3738,20 @@
 .is-mobile .dashboard-hub-db-secret-search input {
   height: 44px;
 }
+
+/* TEMPORARY diagnostic overlay — remove with MobileLayoutDebug.tsx. */
+.dashboard-hub-mobile-debug {
+  position: fixed;
+  top: env(safe-area-inset-top);
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  padding: 4px 6px;
+  background: rgba(0, 0, 0, 0.82);
+  color: #0f0;
+  font-family: var(--font-monospace);
+  font-size: 10px;
+  line-height: 1.35;
+  pointer-events: none;
+}
+.dashboard-hub-mobile-debug b { color: #ff0; font-weight: 700; }
