@@ -3613,31 +3613,56 @@
   touch-action: manipulation;
 }
 
-/* Floating "done typing" button — see KeyboardDoneButton.tsx. Sits above the
-   on-screen keyboard; `bottom` is set from JS off visualViewport. */
+/* "Done typing" button — see KeyboardDoneButton.tsx. Lives in a dialog header
+   because that is the one region the on-screen keyboard never covers. Styled
+   loud on purpose: it appears mid-typing and needs to read as the way out. */
 .dashboard-hub-keyboard-done {
-  position: fixed;
-  right: 16px;
-  bottom: 16px;
-  z-index: 1200;
   display: inline-flex;
+  flex: 0 0 auto;
   align-items: center;
-  gap: 6px;
-  min-height: 44px;
-  padding: 0 18px;
+  gap: 5px;
+  min-height: 38px;
+  padding: 0 14px;
   border: none;
   border-radius: 999px;
   background: var(--interactive-accent);
   color: var(--text-on-accent);
   font-size: var(--font-ui-small);
-  font-weight: 600;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.32);
+  font-weight: 700;
+  white-space: nowrap;
+  box-shadow: 0 2px 10px hsla(var(--interactive-accent-hsl), 0.5);
   cursor: pointer;
   touch-action: manipulation;
+  animation: dashboard-hub-keyboard-done-in 160ms ease-out,
+    dashboard-hub-keyboard-done-pulse 1.6s ease-in-out 160ms infinite;
 }
 .dashboard-hub-keyboard-done:hover,
 .dashboard-hub-keyboard-done:active {
   background: var(--interactive-accent-hover);
+}
+@keyframes dashboard-hub-keyboard-done-in {
+  from { transform: scale(0.85); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+@keyframes dashboard-hub-keyboard-done-pulse {
+  0%, 100% { box-shadow: 0 2px 10px hsla(var(--interactive-accent-hsl), 0.5); }
+  50% { box-shadow: 0 2px 16px hsla(var(--interactive-accent-hsl), 0.95); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .dashboard-hub-keyboard-done { animation: none; }
+}
+
+/* The compact unlock dialog has no title bar, so it gets a small header row. */
+.dashboard-hub-db-secret-compact-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+/* Keep the header from crushing the title when the button appears. */
+.dashboard-hub-db-secret-dialog-title:has(.dashboard-hub-keyboard-done) .dashboard-hub-db-secret-dialog-heading small {
+  display: none;
 }
 
 /* Dashboard toolbar on mobile: thumb-sized buttons. */
