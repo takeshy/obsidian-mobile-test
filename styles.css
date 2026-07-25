@@ -1763,7 +1763,7 @@
 
 /* Secret manager widget */
 .dashboard-hub-db-secret-manager { position: relative; display: flex; flex-direction: column; height: 100%; min-height: 0; }
-.dashboard-hub-db-secret-toolbar { display: flex; align-items: center; gap: 8px; padding: 10px; border-bottom: 1px solid var(--background-modifier-border); background: var(--background-secondary); }
+.dashboard-hub-db-secret-toolbar { display: flex; flex: 0 0 auto; align-items: center; gap: 8px; padding: 10px; border-bottom: 1px solid var(--background-modifier-border); background: var(--background-secondary); }
 .dashboard-hub-db-secret-search { position: relative; display: flex; flex: 1; min-width: 0; align-items: center; }
 .dashboard-hub-db-secret-search > svg { position: absolute; left: 11px; z-index: 1; color: var(--text-faint); pointer-events: none; transition: color 120ms ease; }
 .dashboard-hub-db-secret-search input { width: 100%; height: 36px; min-width: 0; padding: 0 34px; border: 1px solid var(--background-modifier-border); border-radius: 10px; color: var(--text-normal); background: var(--background-primary); box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06); transition: border-color 120ms ease, box-shadow 120ms ease; }
@@ -1773,7 +1773,7 @@
 .dashboard-hub-db-secret-search button { position: absolute; right: 6px; display: grid; width: 24px; height: 24px; place-items: center; padding: 0; border: 0; border-radius: 6px; color: var(--text-muted); background: transparent; box-shadow: none; }
 .dashboard-hub-db-secret-search button:hover { color: var(--text-normal); background: var(--background-modifier-hover); }
 .dashboard-hub-db-secret-toolbar .dashboard-hub-db-primary-btn { display: inline-flex; align-items: center; gap: 4px; white-space: nowrap; }
-.dashboard-hub-db-secret-list { min-height: 0; overflow: auto; padding: 6px; }
+.dashboard-hub-db-secret-list { flex: 1 1 auto; min-height: 0; overflow: auto; padding: 6px; }
 .dashboard-hub-db-secret-row { display: flex; align-items: center; gap: 8px; padding: 8px; border-bottom: 1px solid var(--background-modifier-border); cursor: pointer; }
 .dashboard-hub-db-secret-row:hover { background: var(--background-secondary); }
 .dashboard-hub-db-secret-group { border-bottom: 1px solid var(--background-modifier-border); }
@@ -3160,6 +3160,9 @@
 }
 .dashboard-hub-launcher-dashboard-list {
   display: grid;
+  /* flex:1 is load-bearing — as a plain `0 1 auto` item with min-height:0 this
+     collapses to nothing the moment the on-screen keyboard shrinks the modal. */
+  flex: 1 1 auto;
   min-height: 0;
   overflow-y: auto;
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
