@@ -3612,3 +3612,30 @@
   flex: 0 0 44px;
   touch-action: manipulation;
 }
+
+/* Floating "done typing" button — see KeyboardDoneButton.tsx. Sits above the
+   on-screen keyboard; `bottom` is set from JS off visualViewport. */
+.dashboard-hub-keyboard-done {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  z-index: 1200;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 44px;
+  padding: 0 18px;
+  border: none;
+  border-radius: 999px;
+  background: var(--interactive-accent);
+  color: var(--text-on-accent);
+  font-size: var(--font-ui-small);
+  font-weight: 600;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.32);
+  cursor: pointer;
+  touch-action: manipulation;
+}
+.dashboard-hub-keyboard-done:hover,
+.dashboard-hub-keyboard-done:active {
+  background: var(--interactive-accent-hover);
+}
