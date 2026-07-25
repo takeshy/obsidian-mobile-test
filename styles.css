@@ -3491,3 +3491,101 @@
   height: 44px;
   min-height: 44px;
 }
+
+/* Launcher: File / Base file pickers                                     */
+.dashboard-hub-launcher-filesearch {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 8px;
+  padding: 0 10px;
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 10px;
+  background: var(--background-primary);
+}
+.dashboard-hub-launcher-filesearch svg {
+  flex: 0 0 auto;
+  color: var(--text-muted);
+}
+.dashboard-hub-launcher-filesearch input {
+  width: 100%;
+  height: 38px;
+  border: none;
+  background: transparent;
+  box-shadow: none;
+}
+.dashboard-hub-launcher-filesearch input:focus {
+  box-shadow: none;
+}
+.dashboard-hub-launcher-filesearch > button {
+  display: grid;
+  width: 26px;
+  height: 26px;
+  flex: 0 0 auto;
+  padding: 0;
+  border: none;
+  border-radius: 6px;
+  background: transparent;
+  box-shadow: none;
+  color: var(--text-muted);
+  place-items: center;
+  cursor: pointer;
+}
+.dashboard-hub-launcher-filesearch > button:hover {
+  background: var(--background-modifier-hover);
+}
+
+.dashboard-hub-launcher-filehost {
+  display: flex;
+  height: 100%;
+  min-height: 0;
+  flex-direction: column;
+  gap: 8px;
+}
+.dashboard-hub-launcher-fileback {
+  flex: 0 0 auto;
+  align-self: flex-start;
+  padding: 4px 10px;
+  border: none;
+  background: transparent;
+  box-shadow: none;
+  color: var(--text-muted);
+  font-size: var(--font-ui-small);
+  cursor: pointer;
+}
+.dashboard-hub-launcher-fileback:hover {
+  color: var(--text-normal);
+  background: var(--background-modifier-hover);
+}
+.dashboard-hub-launcher-filebody {
+  display: flex;
+  min-height: 0;
+  flex: 1 1 auto;
+  flex-direction: column;
+  overflow: auto;
+}
+.dashboard-hub-launcher-filebody > .dashboard-hub-db-file-wrap,
+.dashboard-hub-launcher-filebody > .dashboard-hub-db-base {
+  height: 100%;
+  min-height: 0;
+}
+.dashboard-hub-launcher-body.is-tool > .dashboard-hub-launcher-filehost,
+.dashboard-hub-launcher-body.is-tool > .dashboard-hub-launcher-dashboards {
+  height: 100%;
+  min-height: 0;
+}
+
+/* Mobile: single-column list and thumb-sized rows/controls. */
+.is-mobile .dashboard-hub-launcher-dashboard-list {
+  grid-template-columns: 1fr;
+}
+.is-mobile .dashboard-hub-launcher-filesearch input {
+  height: 44px;
+  font-size: 16px;
+}
+.is-mobile .dashboard-hub-launcher-fileback {
+  min-height: 44px;
+  padding: 0 12px;
+  border-radius: 10px;
+  touch-action: manipulation;
+}
