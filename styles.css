@@ -3589,3 +3589,26 @@
   border-radius: 10px;
   touch-action: manipulation;
 }
+
+/* File tool in the launcher: no cell chrome to reserve space for, so drop the
+   64px reservation the dashboard header needs. */
+.dashboard-hub-launcher-filebody .dashboard-hub-db-file-header {
+  padding-right: 8px;
+}
+.is-mobile .dashboard-hub-launcher-filebody .dashboard-hub-db-file-header {
+  gap: 4px;
+  padding: 4px;
+}
+.is-mobile .dashboard-hub-launcher-filebody .dashboard-hub-db-markdown-open {
+  display: grid;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border-radius: 10px;
+  place-items: center;
+  touch-action: manipulation;
+}
+.is-mobile .dashboard-hub-db-memo-rail {
+  flex: 0 0 44px;
+  touch-action: manipulation;
+}
