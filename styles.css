@@ -3755,3 +3755,24 @@
   pointer-events: none;
 }
 .dashboard-hub-mobile-debug b { color: #ff0; font-weight: 700; }
+
+/* ===================================================================== */
+/* Obsidian mobile keyboard padding                                      */
+/* ===================================================================== */
+
+/* When the on-screen keyboard opens, Obsidian mobile pads `.view-content`
+   at the bottom by roughly the keyboard height so a focused field near the
+   bottom of a scrolling note stays visible. Measured on an iPhone: the view
+   was 433px tall with 308px of that padding, leaving our grid's scroll area
+   56px of the 632px it needed — the widget list simply had nowhere to render,
+   which is why focusing a widget's search field made everything below it
+   vanish and blurring brought it back.
+
+   This view does not need that padding: its own scroll containers handle
+   scrolling, and every text form it opens is a top-anchored modal (see the
+   mobile modal convention at the top of this file). `!important` is required
+   because Obsidian sets the padding inline. */
+.is-mobile .workspace-leaf-content[data-type="hub-dashboard-view"] .view-content,
+.is-mobile .workspace-leaf-content[data-type="dashboard-hub-kanban-view"] .view-content {
+  padding-bottom: 0 !important;
+}
