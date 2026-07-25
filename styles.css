@@ -3302,3 +3302,142 @@
   place-items: center;
   touch-action: manipulation;
 }
+
+/* ===================================================================== */
+/* Mobile input forms                                                    */
+/* ===================================================================== */
+
+/* iOS Safari zooms the whole viewport whenever a focused field's font-size
+   is under 16px, and Obsidian's --font-ui-* scale sits well below that. That
+   zoom (plus ~22px icon buttons inherited from the desktop layout) is what
+   made these forms awkward to type in. Everything below keeps mobile fields
+   at 16px and grows controls to the 44px target the launcher already uses. */
+.is-mobile .dashboard-hub-db-timeline-composer textarea,
+.is-mobile .dashboard-hub-db-timeline-edit textarea,
+.is-mobile .dashboard-hub-db-memo-compose textarea,
+.is-mobile .dashboard-hub-db-calendar-modal input,
+.is-mobile .dashboard-hub-db-calendar-modal textarea,
+.is-mobile .dashboard-hub-db-calendar-modal select,
+.is-mobile .dashboard-hub-db-secret-dialog input,
+.is-mobile .dashboard-hub-db-secret-dialog textarea,
+.is-mobile .dashboard-hub-db-kanban-new-card-modal input,
+.is-mobile .dashboard-hub-db-kanban-new-card-modal textarea {
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+/* Shared chrome for the top-anchored input sheets. */
+.is-mobile .dashboard-hub-db-timeline-composer.is-mobile-modal,
+.is-mobile .dashboard-hub-db-timeline-edit.is-keyboard-focused,
+.is-mobile .dashboard-hub-db-memo-compose.is-mobile-modal {
+  gap: 10px;
+  padding: 14px;
+  border-radius: 20px;
+  background: var(--background-primary);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.34);
+}
+.is-mobile .dashboard-hub-db-timeline-composer.is-mobile-modal textarea,
+.is-mobile .dashboard-hub-db-timeline-edit.is-keyboard-focused textarea,
+.is-mobile .dashboard-hub-db-memo-compose.is-mobile-modal textarea {
+  min-height: 132px;
+  max-height: 42dvh;
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: var(--background-primary-alt);
+}
+
+/* A real separated action bar instead of a row of cramped icons. */
+.is-mobile .dashboard-hub-db-timeline-composer.is-mobile-modal .dashboard-hub-db-timeline-composer-actions,
+.is-mobile .dashboard-hub-db-timeline-edit.is-keyboard-focused .dashboard-hub-db-timeline-composer-actions {
+  gap: 8px;
+  padding-top: 10px;
+  border-top: 1px solid var(--background-modifier-border);
+}
+.is-mobile .dashboard-hub-db-timeline-composer.is-mobile-modal .dashboard-hub-db-timeline-composer-primary-actions,
+.is-mobile .dashboard-hub-db-timeline-edit.is-keyboard-focused .dashboard-hub-db-timeline-composer-primary-actions {
+  gap: 8px;
+}
+.is-mobile .dashboard-hub-db-timeline-composer.is-mobile-modal .dashboard-hub-db-timeline-iconbtn,
+.is-mobile .dashboard-hub-db-timeline-edit.is-keyboard-focused .dashboard-hub-db-timeline-iconbtn {
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border-radius: 12px;
+  background: var(--background-modifier-hover);
+  color: var(--text-normal);
+  touch-action: manipulation;
+}
+.is-mobile .dashboard-hub-db-timeline-composer.is-mobile-modal .dashboard-hub-db-timeline-post,
+.is-mobile .dashboard-hub-db-timeline-edit.is-keyboard-focused .dashboard-hub-db-timeline-post {
+  gap: 6px;
+  min-height: 44px;
+  padding: 0 20px;
+  border-radius: 12px;
+  font-size: var(--font-ui-small);
+  font-weight: 600;
+  touch-action: manipulation;
+}
+
+/* Larger image thumbnails — the 58px desktop ones are hard to hit to remove. */
+.is-mobile .dashboard-hub-db-timeline-composer.is-mobile-modal .dashboard-hub-db-timeline-image,
+.is-mobile .dashboard-hub-db-memo-compose.is-mobile-modal .dashboard-hub-db-timeline-image {
+  width: 68px;
+  height: 68px;
+}
+
+/* Dim the app properly so the sheet reads as a modal. */
+.is-mobile .dashboard-hub-db-timeline-composer-backdrop,
+.is-mobile .dashboard-hub-db-memo-compose-backdrop {
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(2px);
+}
+
+/* Calendar event form: the desktop layout packs 26px date fields and unsized
+   buttons into a grid, which is unusable with a thumb. */
+.is-mobile .dashboard-hub-db-calendar-event-form {
+  gap: 14px;
+  padding: 14px;
+}
+.is-mobile .dashboard-hub-db-calendar-event-form label {
+  font-size: var(--font-ui-small);
+}
+.is-mobile .dashboard-hub-db-calendar-event-form input,
+.is-mobile .dashboard-hub-db-calendar-event-form select,
+.is-mobile .dashboard-hub-db-calendar-event-date input {
+  min-height: 44px;
+  height: auto;
+  padding: 0 12px;
+  border-radius: 10px;
+  font-size: 16px;
+}
+.is-mobile .dashboard-hub-db-calendar-event-content-field textarea {
+  min-height: 120px;
+  padding: 10px 12px;
+  border-radius: 10px;
+}
+.is-mobile .dashboard-hub-db-calendar-event-form-actions {
+  gap: 10px;
+  padding-top: 4px;
+}
+.is-mobile .dashboard-hub-db-calendar-event-form-actions button {
+  flex: 1;
+  min-width: 0;
+  min-height: 44px;
+  border-radius: 12px;
+  font-size: var(--font-ui-small);
+  font-weight: 600;
+  touch-action: manipulation;
+}
+.is-mobile .dashboard-hub-db-calendar-modal-close {
+  width: 44px;
+  height: 44px;
+  margin: 8px 8px -52px 0;
+  touch-action: manipulation;
+}
+.is-mobile .dashboard-hub-db-calendar-detail-heading button {
+  min-height: 40px;
+  padding: 0 12px;
+  border-radius: 10px;
+  font-size: var(--font-ui-small);
+  touch-action: manipulation;
+}
