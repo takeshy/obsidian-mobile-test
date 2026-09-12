@@ -3706,8 +3706,8 @@
 
 .is-mobile .gemini-helper-input-modal-panel {
   width: 100%;
-  height: 100%;
-  max-height: none;
+  height: min(42svh, 320px);
+  max-height: 320px;
 }
 
 /* Autocomplete */
