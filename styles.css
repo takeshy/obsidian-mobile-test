@@ -576,6 +576,8 @@
 .is-mobile .gemini-helper-stop-btn,
 .is-mobile .gemini-helper-expand-input-btn,
 .is-mobile .gemini-helper-shrink-input-btn,
+.is-mobile .gemini-helper-collapse-btn,
+.is-mobile .gemini-helper-restore-input-btn,
 .is-mobile .gemini-helper-attachment-btn {
   width: 44px;
   height: 44px;
@@ -3618,7 +3620,9 @@
 .gemini-helper-send-btn,
 .gemini-helper-stop-btn,
 .gemini-helper-expand-input-btn,
-.gemini-helper-shrink-input-btn {
+.gemini-helper-shrink-input-btn,
+.gemini-helper-collapse-btn,
+.gemini-helper-restore-input-btn {
   background: transparent;
   border: none;
   cursor: pointer;
@@ -3644,13 +3648,22 @@
 .gemini-helper-send-btn:hover:not(:disabled),
 .gemini-helper-stop-btn:hover,
 .gemini-helper-expand-input-btn:hover,
-.gemini-helper-shrink-input-btn:hover {
+.gemini-helper-shrink-input-btn:hover,
+.gemini-helper-collapse-btn:hover,
+.gemini-helper-restore-input-btn:hover {
   background: var(--background-modifier-hover);
 }
 
 .gemini-helper-expand-input-btn,
-.gemini-helper-shrink-input-btn {
+.gemini-helper-shrink-input-btn,
+.gemini-helper-collapse-btn,
+.gemini-helper-restore-input-btn {
   color: var(--text-muted);
+}
+
+.gemini-helper-collapsed-bar {
+  display: flex;
+  justify-content: center;
 }
 
 .gemini-helper-input-modal {
@@ -3685,6 +3698,7 @@
   max-height: none;
   box-sizing: border-box;
   padding-bottom: 56px;
+  caret-color: var(--text-normal);
   resize: none;
 }
 
