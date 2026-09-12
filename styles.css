@@ -3658,14 +3658,17 @@
   inset: 0;
   z-index: var(--layer-modal, 1000);
   display: flex;
+  align-items: center;
+  justify-content: center;
   padding: max(16px, env(safe-area-inset-top)) max(12px, env(safe-area-inset-right)) max(16px, env(safe-area-inset-bottom)) max(12px, env(safe-area-inset-left));
   background: rgb(0 0 0 / 45%);
 }
 
 .gemini-helper-input-modal-panel {
-  display: flex;
-  flex: 1;
-  gap: 8px;
+  position: relative;
+  display: block;
+  width: min(100%, 900px);
+  height: min(70dvh, 720px);
   min-width: 0;
   padding: 12px;
   border-radius: 12px;
@@ -3674,10 +3677,34 @@
 }
 
 .gemini-helper-input.gemini-helper-input-expanded {
+  display: block;
   width: 100%;
+  height: 100%;
   min-height: 0;
   max-height: none;
+  padding-bottom: 56px;
   resize: none;
+}
+
+.gemini-helper-input-modal-panel > .gemini-helper-send-buttons {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  flex-direction: row;
+  padding: 4px;
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--background-primary) 92%, transparent);
+  box-shadow: var(--shadow-s);
+}
+
+.is-mobile .gemini-helper-input-modal {
+  align-items: flex-start;
+}
+
+.is-mobile .gemini-helper-input-modal-panel {
+  width: 100%;
+  height: min(48dvh, 360px);
 }
 
 /* Autocomplete */
